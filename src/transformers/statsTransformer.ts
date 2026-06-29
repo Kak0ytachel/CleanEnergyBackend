@@ -54,7 +54,7 @@ async function filterAndMergeData(data: IGenerationData[], date: Date) {
 export default async function transformStats(data: IGenerationResponse) {
     const ans = {
         "today": await filterAndMergeData(data.data, new Date()),
-        "tommorow": await filterAndMergeData(data.data, new Date(new Date().getTime() + 1000 * 60 * 60 * 24)),
-        "afterTommorow": await filterAndMergeData(data.data, new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 2)),
+        "tomorrow": await filterAndMergeData(data.data, new Date(new Date().getTime() + 1000 * 60 * 60 * 24)),
+        "afterTomorrow": await filterAndMergeData(data.data, new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 2)),
     }
 }
