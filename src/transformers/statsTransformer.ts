@@ -51,10 +51,17 @@ async function filterAndMergeData(data: IGenerationData[], date: Date) {
     return result;
 }
 
-export default async function transformStats(data: IGenerationResponse) {
+export interface IStats {
+    today: IGenerationData,
+    tomorrow: IGenerationData,
+    afterTomorrow: IGenerationData,
+}
+
+export default async function transformStats(data: IGenerationResponse): Promise<IStats> {
     const ans = {
         "today": await filterAndMergeData(data.data, new Date()),
         "tomorrow": await filterAndMergeData(data.data, new Date(new Date().getTime() + 1000 * 60 * 60 * 24)),
         "afterTomorrow": await filterAndMergeData(data.data, new Date(new Date().getTime() + 1000 * 60 * 60 * 24 * 2)),
     }
+    return ans;
 }

@@ -6,7 +6,7 @@ import type {
     ICleanEnergyInterval
 } from "../types.js";
 
-function transformOptimal(payload: IGenerationResponse, chargeHours: number): ICleanEnergyInterval {
+export default function transformOptimal(payload: IGenerationResponse, chargeHours: number): ICleanEnergyInterval {
     const data: IGenerationData[] = payload.data.slice(1);
 
     const cleanEnergyData: ICleanEnergyData[] = [];
