@@ -1,6 +1,6 @@
 import type {FastifyInstance, RouteShorthandOptions} from "fastify";
 import transformOptimal from "../transformers/optimalTransformer.ts";
-import type {ICleanEnergyInterval, IGenerationResponse} from "../types.ts";
+import type {ICleanEnergyInterval, IGenerationResponse, IOptimalQuery} from "../types.ts";
 import getGeneration from "../services/apiClient.ts";
 
 
@@ -20,10 +20,6 @@ const opts: RouteShorthandOptions = {
     }
 }
 
-interface IOptimalQuery{
-    chargeHours: number
-
-}
 
 export default function optimalRoute(fastify: FastifyInstance, options: Object) {
     fastify.get<{Querystring: IOptimalQuery}>('/optimal', opts, async (request, reply) => {

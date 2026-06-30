@@ -1,7 +1,7 @@
 import type {FastifyInstance} from "fastify";
-import type {IGenerationResponse} from "../types.ts";
+import type {IGenerationResponse, IStats} from "../types.ts";
 import getGeneration from "../services/apiClient.ts";
-import transformStats, {type IStats} from "../transformers/statsTransformer.ts";
+import transformStats from "../transformers/statsTransformer.ts";
 
 export default function statsRoute(fastify: FastifyInstance, options: Object) {
     fastify.get('/stats', async (request, reply) => {

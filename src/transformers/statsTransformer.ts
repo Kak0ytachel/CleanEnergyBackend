@@ -1,4 +1,4 @@
-import type {IGenerationData, IGenerationResponse} from "../types.js";
+import type {IGenerationData, IGenerationResponse, IStats} from "../types.js";
 
 // takes ISO date strings and compares if they are the same day
 function compareDay(datetimeA: string, datetimeB: string): boolean {
@@ -49,12 +49,6 @@ async function filterAndMergeData(data: IGenerationData[], date: Date) {
         )
     }
     return result;
-}
-
-export interface IStats {
-    today: IGenerationData,
-    tomorrow: IGenerationData,
-    afterTomorrow: IGenerationData,
 }
 
 export default async function transformStats(data: IGenerationResponse): Promise<IStats> {

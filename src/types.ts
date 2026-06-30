@@ -33,3 +33,13 @@ export interface ICleanEnergyInterval {  // made as a separate interface for fut
     to: string,
     perc: number
 }
+
+export interface IOptimalQuery{
+    chargeHours: number
+}
+
+export interface IStats {
+    today: IGenerationData,
+    tomorrow: IGenerationData,
+    afterTomorrow: IGenerationData,
+}
