@@ -69,7 +69,7 @@ describe("GET /stats route", () => {
         for (const child of Object.values(data)) {
             const mix: IEnergyTypeItem[] = (child as any).generationmix!;
             for (const item of mix) {
-                console.log(item);
+                // console.log(item);
                 expect(item).toEqual({
                     fuel: expect.any(String),
                     perc: expect.any(Number)
