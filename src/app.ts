@@ -1,5 +1,6 @@
 import fastify from "fastify";
 import routes from "./routes/index.ts";
+import {fastifyCors} from "@fastify/cors";
 
 export default function buildApp() {
     const app = fastify({
@@ -11,5 +12,6 @@ export default function buildApp() {
             },
         });
     app.register(routes)
+    app.register(fastifyCors)
     return app;
 }
