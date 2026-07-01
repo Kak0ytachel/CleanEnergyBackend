@@ -39,6 +39,15 @@ async function filterAndMergeData(data: IGenerationData[], date: Date) {
         }
     }
 
+    // rounds down all percentages
+    let percentageSum: number = 0;
+    for (let fuel in fuelValues) {
+        fuelValues[fuel] = Math.floor((fuelValues[fuel] || 0) / counter);
+        percentageSum += fuelValues[fuel];
+    }
+    // adds the rest to "other" to sum up to 100
+    fuelValues["other"] = (fuelValues["other"] || 0) + 100 - percentageSum;
+
     //noinspection SpellCheckingInspection
     const result: IGenerationData = {
         // undefined handled at filterData length check
